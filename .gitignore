@@ -24,4 +24,5 @@ yarn-error.log*
 src/pages/overview.md
 
 # Image generation cache (full-size originals and manifest)
-static/img/.image-cache/
+# Stored at project root to avoid Docusaurus processing during builds
+.image-cache/

@@ -692,7 +692,7 @@ function analyzeDebugResponse(
               console.log('\n💾 Saving test image to verify pipeline...');
               try {
                 const testBuffer = Buffer.from(extracted, 'base64');
-                const testPath = path.join(path.dirname(getDebugCachePath({ cacheDir: 'static/img/.image-cache' } as ImageGeneratorConfig, 'test')), 'debug-test-image.png');
+                const testPath = path.join(path.dirname(getDebugCachePath({ cacheDir: '.image-cache' } as ImageGeneratorConfig, 'test')), 'debug-test-image.png');
                 fs.writeFileSync(testPath, testBuffer);
                 console.log(`   ✅ Saved test image to: ${testPath}`);
                 console.log(`   Image size: ${(testBuffer.length / 1024).toFixed(1)} KB`);
@@ -786,7 +786,7 @@ function analyzeGeminiDebugResponse(
               console.log('\n💾 Saving test image to verify pipeline...');
               try {
                 const testBuffer = Buffer.from(part.inlineData.data, 'base64');
-                const testPath = path.join(path.dirname(getDebugCachePath({ cacheDir: 'static/img/.image-cache' } as ImageGeneratorConfig, 'test')), 'debug-test-image.png');
+                const testPath = path.join(path.dirname(getDebugCachePath({ cacheDir: '.image-cache' } as ImageGeneratorConfig, 'test')), 'debug-test-image.png');
                 fs.writeFileSync(testPath, testBuffer);
                 
                 // Get image dimensions
@@ -1077,8 +1077,8 @@ export function getDefaultConfig(projectRoot: string): Partial<ImageGeneratorCon
         // Gemini model for image generation (don't include google/ prefix)
         model: process.env.GEMINI_MODEL || 'gemini-3-pro-image-preview',
         projectRoot,
-        cacheDir: path.join(projectRoot, 'static/img/.image-cache'),
-        manifestPath: path.join(projectRoot, 'static/img/.image-cache/manifest.json'),
+        cacheDir: path.join(projectRoot, '.image-cache'),
+        manifestPath: path.join(projectRoot, '.image-cache/manifest.json'),
         concurrency: 2, // Lower concurrency for 4K generation to avoid 503s
         systemPrompt: DEFAULT_SYSTEM_PROMPT,
         variationCount: 2,

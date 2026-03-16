@@ -216,7 +216,7 @@ function printSummary(results: ProcessingResult[]): void {
   if (totalGenerated > 0) {
     console.log('\n✅ Generation complete!');
     console.log('   New images saved to static/img/ directories.');
-    console.log('   Full-size originals cached in static/img/.image-cache/originals/');
+    console.log('   Full-size originals cached in .image-cache/originals/');
   } else if (totalFailed === 0) {
     console.log('\n✅ All images are up to date!');
   } else {
