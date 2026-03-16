@@ -30,7 +30,7 @@ import Img from '@site/src/components/Img';
   - Section 3: Testing concepts students get wrong (~10 min)
   - Section 4: Rapid-fire topic wrap (~8 min)
 
-**Scope of Exam 2:** L12 (Domain Modeling) through L24 (Usability). Everything since Exam 1.
+**Scope of Exam 2:** L9 (Requirements) through L23 (Open Source). Everything since Exam 1.
 
 **Key message today:** The exam won't ask you to recite definitions. It will ask you to reason about tradeoffs and explain what code is doing. That's exactly what we'll practice today.
 
@@ -90,12 +90,12 @@ import Img from '@site/src/components/Img';
   <li><strong>Architecture</strong> — HW5 decisions, hexagonal, ADRs, monolith, serverless (~18 min)</li>
   <li><strong>Poll</strong> — 5 MC questions, 5 min to answer + 5 min discussion (~10 min)</li>
   <li><strong>Testing</strong> — test double concepts, testability best practices, anti-patterns (~8 min)</li>
-  <li><strong>Rapid-fire</strong> — requirements, GRASP, networks, teams/AI/OSS, usability (~12 min)</li>
+  <li><strong>Rapid-fire</strong> — requirements, GRASP, networks, teams/AI/OSS (~12 min)</li>
   <li><strong>Exam logistics + Q&A</strong> (~2 min)</li>
 </ol>
 
 <p style={{fontSize: '0.82em', marginTop: '1.2em', fontStyle: 'italic', color: '#666'}}>
-  Exam scope: L12–L24. One in-class exercise — bring your thinking caps.
+  Exam scope: L9-L23.
 </p>
 
 <aside className="notes">
@@ -921,7 +921,7 @@ The most common mistake: students write ADRs that only describe benefits. A good
 ## Mid-Lecture Poll — 5 minutes
 
 <p style={{fontSize: '0.9em', marginTop: '0.5em', fontStyle: 'italic'}}>
-  Answer at <strong>pollev.com/[your code]</strong>
+  Answer at <strong>pollev.com/jbell</strong>
 </p>
 
 <aside className="notes">
@@ -934,7 +934,7 @@ The most common mistake: students write ADRs that only describe benefits. A good
 ---
 
 **Q1 (GRASP — Information Expert):**
-A `CookbookManager` class calls into `Recipe` to get the list of ingredients, sums up the total calories, and returns the result. A colleague suggests moving the calorie calculation into `CookbookManager` instead. According to the Information Expert pattern, which is the better design?
+`CookbookManager` calls `Recipe` for ingredients and sums calories. A colleague suggests moving the calorie calculation into `CookbookManager`. Per Information Expert, which is better?
 
 A) CookbookManager — it's calling the method anyway
 B) Recipe — it has the ingredient data needed to calculate calories ✓
@@ -944,7 +944,7 @@ D) It doesn't matter; either works
 ---
 
 **Q2 (Architectural decision):**
-An `EnergyPriceService` constructs a `new HttpClient()` inside its `shouldCharge()` method and calls the live grid pricing API directly. Which quality attribute does this most directly hurt?
+`EnergyPriceService` constructs `new HttpClient()` inside `shouldCharge()` and calls the live grid API directly. Which quality attribute does this hurt most?
 
 A) Simplicity
 B) Testability ✓
@@ -954,7 +954,7 @@ D) Deployability
 ---
 
 **Q3 (Distributed systems):**
-A grading service receives a submission, starts processing, and then crashes. When it restarts, it processes the same submission again — the student gets double-graded. Which pattern would prevent this?
+A grading service crashes mid-processing. On restart, it processes the same submission again — student gets double-graded. Which pattern prevents this?
 
 A) Circuit breaker
 B) Exponential backoff
@@ -964,7 +964,7 @@ D) Graceful degradation
 ---
 
 **Q4 (Monolith vs. distributed):**
-A team deploys their application as a monolith. They fix a one-line bug in the notification module and have to redeploy the entire system, which takes 20 minutes and takes the app offline. Which monolith characteristic explains this?
+A one-line bug fix in the notification module requires redeploying the entire monolith — 20 minutes, app offline. Which monolith characteristic explains this?
 
 A) Shared memory
 B) Unified codebase
@@ -974,7 +974,7 @@ D) Technical partitioning
 ---
 
 **Q5 (Test doubles — conceptual):**
-You're testing `OrderService.placeOrder()`. The method calls `EmailService.sendConfirmation()` as a side effect. You can't check the return value of `placeOrder()` to know if the email was sent. What should your test do?
+`OrderService.placeOrder()` calls `EmailService.sendConfirmation()` as a side effect. You can't infer from the return value whether the email was sent. What should your test do?
 
 A) Provide a fake `EmailService` that returns a predictable value
 B) Verify that `EmailService.sendConfirmation()` was called with the right arguments ✓
@@ -1448,7 +1448,7 @@ The `RecipeCommandHandler` that students analyzed violated the Controller patter
 
 <Slide>
 
-## Teams, AI, OSS, and Usability (L22–24)
+## Teams, AI and OSS 
 
 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1em', fontSize: '0.76em', marginTop: '0.5em'}}>
 
@@ -1484,16 +1484,6 @@ AI *crosses the line* when: you submit code you cannot explain, you let AI make 
 
 </div>
 
-<div style={{backgroundColor: 'rgba(100,74,153,0.12)', padding: '0.7em', borderRadius: '8px'}}>
-
-**Usability (L24)**
-
-- **Five aspects:** Learnability, effectiveness, productivity, retainability, satisfiability
-- **Nielsen's 10 heuristics:** know the concepts — system status visibility, error prevention, user control, consistency, recognition over recall, etc.
-- **Mental models:** users have expectations; when software violates them, the user is wrong about the behavior but the *designer* is responsible for the gap
-
-</div>
-
 </div>
 
 <aside className="notes">
@@ -1526,7 +1516,7 @@ The study guide explicitly calls out "AI best practices for 3100: review the syl
 | **Date** | Wednesday, March 18 — class time, same room |
 | **Format** | Written; one cover sheet (same as Exam 1) |
 | **Length** | More questions than Exam 1 — budget your time |
-| **Scope** | L12–L24 (Domain Modeling through Usability) |
+| **Scope** | L9–L23 (Domain Modeling through Open Source) |
 | **Question style** | Conceptual reasoning, identify issues in code, evaluate tradeoffs |
 | **Not on the exam** | Labeling test doubles by exact name (spy/fake/stub/mock) |
 | **Headphones** | Not permitted — earplugs available on request |
@@ -1541,7 +1531,7 @@ The study guide explicitly calls out "AI best practices for 3100: review the syl
 
 **Questions to watch for:**
 - Students asking about specific labs — L9 (requirements), L14 (debugging), L16 (testability) labs are all fair game
-- Students asking "will X be on the exam?" — the answer is: if it was in L12–L24, it may appear
+- Students asking "will X be on the exam?" — the answer is: if it was in L9–L23, it may appear
 - Students asking about AI tools on the exam — no, closed book except the cover sheet
 
 **Remind them:** Study session was earlier this week; practice exam is posted; office hours are available.
