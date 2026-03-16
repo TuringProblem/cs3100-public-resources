@@ -6,6 +6,10 @@ image: /img/assignments/web/a5.png
 
 ## Overview
 
+**Changelog:**
+- 3/16/2026: When displaying a recipe with no servings information, use the phrase "No Servings" (applies to `show`, `recipes` listing, `cook` mode header).
+- 3/16/2026: Added Windows hint: use `WindowsPathAwareParser` so backslashes in paths (e.g., `import json`) work correctly. See [jline/jline3#1238](https://github.com/jline/jline3/issues/1238).
+
 In this assignment, you'll build an **interactive command-line interface (CLI)** for CookYourBooks — a command-oriented terminal application that lets users manage their recipe library, import recipes, scale and convert ingredients, generate shopping lists, and follow recipes step-by-step while cooking.
 
 The CLI is your first **driving adapter** in the [hexagonal architecture](/lecture-notes/l16-testing2) — an adapter that *drives* the application by calling into your service layer on behalf of a user (as opposed to *driven* adapters like repositories, which the application calls out to). But here's the twist: you won't use the `RecipeService` from A4. Instead, you'll design your own service layer — one that's actually well-suited for *multiple* user interfaces. In A4, we told you `RecipeService` was not ideal design. Now you get to prove you understand *why* by building something better.
@@ -307,6 +311,32 @@ while (true) {
 
 :::
 
+:::tip Windows Users: Backslash in Paths
+
+JLine's `DefaultParser` treats backslash (`\`) as an escape character. On Windows, paths like `C:\Users\recipes\pie.json` get mangled — backslashes are stripped and path segments merge (see [jline/jline3#1238](https://github.com/jline/jline3/issues/1238)). To fix this, use a custom parser that does not treat backslash as an escape:
+
+```java
+public class WindowsPathAwareParser extends DefaultParser {
+    @Override
+    public boolean isEscapeChar(char ch) {
+        // Don't treat backslash as an escape character
+        return false;
+    }
+}
+```
+
+Then configure your `LineReader` with it:
+
+```java
+LineReader reader = LineReaderBuilder.builder()
+    .parser(new WindowsPathAwareParser())
+    .terminal(terminal)
+    .completer(yourCompleter)
+    .build();
+```
+
+:::
+
 ### Application Wiring
 
 The provided starter includes a `CookYourBooksApp` main class that creates the repositories and conversion registry. **You are responsible for wiring your own services** and launching the CLI. Modify the `main` method to construct your services and pass them to your CLI:
@@ -528,6 +558,9 @@ Instructions:
   4. Combine and fold in chocolate chips
   5. Bake for 12 minutes
 ```
+
+**Requirements:**
+- When a recipe has no servings information, display `No Servings` in place of the servings line (e.g., where "Serves 24 cookies" would otherwise appear). This applies wherever recipe servings are shown: `show`, `recipes` listing, `cook` mode header, etc.
 
 **Error handling:**
 - Recipe not found: `Recipe not found: 'Unknown Recipe'. Use 'search' to find recipes by ingredient.`
