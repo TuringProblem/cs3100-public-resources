@@ -4,11 +4,6 @@ sidebar_position: 12
 image: /img/assignments/web/final.png
 ---
 
-:::warning Preliminary Content
-
-This assignment is preliminary content and is subject to change until the release date of the assignment.
-
-:::
 
 ## Overview
 
@@ -19,6 +14,10 @@ The final project report is your opportunity to document the complete CookYourBo
 The final report is worth **50 points** and serves as the capstone submission for the group project. Infographics will be compiled into a gallery for peer learning across teams.
 
 **Due:** Monday, April 20, 2026 at 11:59 PM Boston Time
+
+:::note Start Early
+The final report is something you should work on **throughout the group project**, not just in the last few days. Architecture decisions, team reflections, and "Our Feature" design work happen during GA1 and GA2 — capture them as you go. The Apr 20 deadline gives you a few extra days after the GA2 checkpoint (Apr 16) to finalize and polish, but this is not meant to be written from scratch in that window.
+:::
 
 ## Deliverables
 
@@ -69,7 +68,7 @@ Honest reflection on collaboration:
 - One thing each team member learned from this experience
 - Advice for future students tackling this project
 
-#### Sustainability Assessment (1/2 page)
+#### Sustainability Assessment (1/2-1 page)
 
 As discussed in [L36: Sustainability](/lecture-notes/l36-sustainability), software sustainability has four dimensions:
 
@@ -81,7 +80,7 @@ As discussed in [L36: Sustainability](/lecture-notes/l36-sustainability), softwa
 | **Environmental** | Energy efficiency? Data storage implications? |
 
 Address:
-1. Current state of your application across these dimensions
+1. Current state of your application across these dimensions (address all four; if a dimension is not applicable, explain why)
 2. Top 3 improvements you'd prioritize for a "v2.0"
 3. Potential risks if the application were deployed to real users
 
@@ -135,7 +134,7 @@ This is a great opportunity to build your portfolio and share your work with fut
 
 ## Grading Rubric
 
-**Total: 50 points.** The individual reflection is a mandatory submission gate (grades not released until submitted) but is not scored separately.
+**Total: 50 points.** The individual reflection is a mandatory submission gate (grades not released until submitted) but is not scored separately. These deliverables and point values apply equally to 3-person and 4-person teams.
 
 ### Written Report (30 points)
 
@@ -161,6 +160,10 @@ This is a great opportunity to build your portfolio and share your work with fut
 |-----------|--------|-----------|--------------|-------------------|
 | **Coverage** | 5 | Shows import, library, search, editor, and 1-2 buffet features; includes error handling | Core flow shown; some features skipped | Minimal coverage |
 | **Clarity** | 5 | Narrated or captioned; realistic data; easy to follow | Followable but unexplained gaps | Hard to follow; placeholder data |
+
+### Individual Accountability Adjustment
+
+TA meeting observations, weekly collaboration surveys, and the peer evaluation survey (submitted with this final report) can adjust an individual's final grade by up to **-20 points** or award an **upward adjustment of up to +20 points**. The upward adjustment exists for a specific scenario: if your team's project isn't fully complete, but you went above and beyond to support struggling teammates, you can still earn full marks. This is **not an extra credit mechanism**; simply doing your own work well is the expected baseline.
 
 ---
 
@@ -192,7 +195,7 @@ Give us specific, actionable feedback on the group project: what worked well and
 
 ## Submission
 
-Submit to the course website (team deliverables):
+Merge to `main` (team deliverables — automatically submitted to Pawtograder):
 
 1. **Written Report** (PDF, 3-4 pages)
 2. **Infographic Poster** (PDF or PNG, single landscape page)
@@ -201,7 +204,8 @@ Submit to the course website (team deliverables):
 
 Submit via Pawtograder (individual):
 
-5. **Individual Reflection** (answers to the 5 questions above)
+5. **Peer Evaluation Survey** (rate each teammate's contributions and collaboration)
+6. **Individual Reflection** (answers to the 5 questions above)
 
 ### Checklist
 
@@ -209,4 +213,5 @@ Submit via Pawtograder (individual):
 - [ ] Infographic is single landscape page with required elements
 - [ ] Demo video is 2-3 minutes showing key functionality
 - [ ] All team members contributed to and reviewed the deliverables
+- [ ] Peer evaluation survey submitted by each team member via Pawtograder
 - [ ] Individual reflection submitted separately by each team member

@@ -4,11 +4,6 @@ sidebar_position: 11
 image: /img/assignments/web/ga2.png
 ---
 
-:::warning Preliminary Content
-
-This assignment is preliminary content and is subject to change until the release date of the assignment.
-
-:::
 
 ## Overview
 
@@ -36,25 +31,42 @@ By completing this assignment, you will demonstrate proficiency in:
 AI tools are **encouraged**, but remember: we're grading process, not just product. AI can help you implement features quickly, but it cannot:
 - Make design decisions for your specific users
 - Document why you made the choices you made
-- Provide meaningful code review
+- Provide meaningful code review (AI-generated review comments do not satisfy the code review rubric)
 - Reflect on what you learned
 
-Use AI as a tool, but ensure the *thinking* is yours.
+Use AI as a tool, but ensure the *thinking* is yours. If you use AI assistance for implementation, you must be able to explain the code and design decisions in your own words during TA meetings.
 
 ## TA Mentor Meetings
 
-Throughout GA2, your team will have **weekly 30-minute meetings** with your assigned TA mentor. **These meetings are an accountability mechanism, not just a scheduling requirement.** If you cannot attend, notify your TA *before* the meeting and provide a written update on your work status—this demonstrates accountability. Missing a meeting without prior notice signals a lack of accountability and will likely result in a grade of zero for that week's individual accountability component. These meetings serve multiple purposes:
+Throughout GA2, your team will have **weekly 30-minute meetings** with your assigned TA mentor. **These meetings are an accountability mechanism, not just a scheduling requirement.** If you cannot attend, notify your TA *before* the meeting and provide a written update on your work status—this demonstrates accountability. Missing a meeting without prior notice signals a lack of accountability and will likely result in a penalty for that week's individual accountability component. These meetings serve multiple purposes:
 
 - **Code walks:** Each team member explains what they worked on and their design choices
 - **Progress check-ins:** Are you on track? Stuck anywhere?
 - **Collaboration verification:** Is the team working well together?
 - **Debugging support:** Your TA can help unblock technical issues
 
-These meetings are also an opportunity to demonstrate your understanding of your code. If you used AI tools to help with implementation, you should still be able to explain how the code works and why you made certain design decisions.
+**Meeting schedule for GA2:**
+
+| Meeting | Target Dates | Focus |
+|---------|-------------|-------|
+| 4 | Apr 13–14 | Feature buffet and integration — buffet feature progress, architecture deep dive, integration maturity, final sprint planning |
+
+Each student earns up to **10 points** at the graded meeting using the same rubric as GA1:
+
+| Category | Points | What your TA is looking for |
+|----------|--------|-----------------------------|
+| **Code Comprehension** | 4 | Can you explain your own code at both a high level and in detail? Can you articulate design decisions and trade-offs? |
+| **Process & Workflow** | 3 | Are you using feature branches, opening PRs with meaningful descriptions, and participating in code review? |
+| **Collaboration Evidence** | 2 | Have you reviewed teammates' PRs? Can you describe what your teammates are working on? |
+| **Forward Planning** | 1 | Do you have a concrete plan for what you're doing next? |
+
+Your TA will use a **top-down questioning approach**: starting with general questions and drilling into specifics. The goal is to assess comprehension, not to quiz you on syntax. If you used AI tools to help with implementation, you must still be able to explain how the code works and why you made certain design decisions.
+
+**Weekly collaboration surveys** are due each Monday (Mar 23, Mar 30, Apr 6, Apr 13) via Pawtograder. These brief check-ins ask you to reflect on team dynamics, your contributions, and any blockers. They are visible to your TA mentor and directly inform the individual accountability adjustment.
 
 ## The Feature Buffet
 
-Choose **2-3 features** from the buffet below.
+Choose **2-3 features** from the buffet below. **3-person teams** follow the same Feature Buffet process and grading as 4-person teams — the number of features selected and all process expectations are unchanged.
 
 ### Standard Features
 
@@ -113,7 +125,7 @@ Document your implementation process:
 
 ### 5. Demo & Reflection (25% of feature grade)
 
-- **Demo video:** 1-2 minute video showing the feature working
+- **Demo video:** 1-2 minute screen recording showing the feature working (upload to YouTube/Vimeo as unlisted, or commit an MP4 to the repo; link from DEMO.md)
 - **What worked well?** What aspects of your process were effective?
 - **What would you do differently?** Specific, actionable lessons learned
 - **Integration notes:** How does this feature connect to the rest of the app?
@@ -122,18 +134,18 @@ Document your implementation process:
 
 **A well-documented partial feature scores higher than a complete feature with no process evidence.**
 
-| Scenario | Approximate Grade |
-|----------|-------------------|
-| Feature complete, excellent process documentation, meaningful iteration | A (90-100%) |
-| Feature complete, minimal process documentation | B- (75-80%) |
-| Feature complete, no documentation | C- (70-72%) |
-| Feature partially complete, excellent process documentation | B+ (85-88%) |
-| Feature partially complete, minimal process documentation | C (70-75%) |
-| Feature generally broken, but excellent documentation of what was attempted | B- (75-78%) |
+| Scenario | Score (out of 40) | Letter Grade Equivalent |
+|----------|-------------------|------------------------|
+| Feature complete, excellent process documentation, meaningful iteration | 36–40 | A |
+| Feature partially complete, excellent process documentation | 32–36 | B+ |
+| Feature complete, minimal process documentation | 28–32 | B- |
+| Feature generally broken, but excellent documentation of what was attempted | 28–32 | B- |
+| Feature partially complete, minimal process documentation | 24–28 | C+ |
+| Feature complete, no documentation | 20–24 | C- |
 
 ## Grading Rubric
 
-**Total: 50 points** — 40 points team (Process Portfolios) + 10 points individual (contribution evidence).
+**Total: 50 points** — 40 points team (Process Portfolios) + 10 points individual (contribution evidence). This equates to **80% team / 20% individual** grading.
 
 ### Team: Process Portfolio (40 points)
 
@@ -142,7 +154,7 @@ Each feature is scored out of 40 points. If your team implements 2–3 features,
 | Component | Points | Excellent | Satisfactory | Needs Improvement |
 |-----------|--------|-----------|--------------|-------------------|
 | **Design Rationale** | 4 | Clear user need, thoughtful alternatives considered | User need stated | Generic or missing rationale |
-| **Design Iteration** | 10 | 3+ versions with clearly documented evolution | 2 versions shown | Single design, no iteration |
+| **Design Artifacts** | 10 | 3+ versions with clearly documented evolution | 2 versions shown | Single design, no iteration |
 | **Implementation Journal** | 8 | Regular commits, quality PRs, decisions documented | Some commits, basic PRs | Large commits, no discussion |
 | **Testing & Quality** | 8 | Comprehensive tests; known limitations documented | Basic tests present | Minimal or no testing |
 | **Demo & Reflection** | 10 | Insightful reflection with specific lessons; demo shows working feature *or* thoroughly documents what was attempted for incomplete/broken features | Generic reflection; demo present | Superficial reflection; no demo |
@@ -160,9 +172,11 @@ Scored per team member based on evidence of personal engagement:
 
 ### Individual Accountability Adjustment
 
-TA meeting observations, collaboration surveys, and peer evaluation can adjust an individual's final grade by **±20 points**. If a team member cannot explain their code in TA meetings while the rest of the team succeeds, their grade may be reduced. Teammates who compensate may receive a small boost. The weekly collaboration surveys (due Mar 16, Mar 23, Mar 30, Apr 6, Apr 13) and peer evaluation submitted after the assignment inform this adjustment.
+TA meeting observations and weekly collaboration surveys can adjust an individual's final grade by up to **-20 points** or award an **upward adjustment of up to +20 points**. If a team member cannot explain their code in TA meetings while the rest of the team succeeds, their grade may be reduced. The upward adjustment exists for a specific scenario: if your team's project isn't fully complete, but you went above and beyond to support struggling teammates — helping them get unblocked, taking on extra integration work, providing thorough code reviews — you can still earn full marks. This is **not an extra credit mechanism**; it is unlikely to bring a student above the assignment's total points. Simply doing your own work well is the expected baseline, not grounds for an upward adjustment. The weekly collaboration surveys (due Mar 23, Mar 30, Apr 6, Apr 13) inform this adjustment.
 
 ## Submission
+
+All deliverables should be merged to `main` following the [Git Workflow for Team Projects](/assignments/git-workflow). Your `main` branch is automatically submitted to Pawtograder.
 
 ### Repository Contents
 
@@ -185,8 +199,7 @@ TA meeting observations, collaboration surveys, and peer evaluation can adjust a
 - [ ] 2-3 features selected from the buffet
 - [ ] Process portfolio complete for each feature
 - [ ] Demo videos recorded and linked
-- [ ] All features integrated into main application
-- [ ] Peer evaluation survey completed (separate submission)
+- [ ] Weekly collaboration surveys up to date (due each Monday via Pawtograder)
 
 ## Reflection Questions for Team Discussion
 
@@ -198,3 +211,7 @@ Before submitting, discuss as a team:
 4. What's one thing each team member learned from another team member?
 
 These don't need to be submitted, but inform your individual reflections in the weekly team collaboration surveys and the final individual reflection.
+
+:::note Mandatory Submission Gate
+As part of the [Final Report](/assignments/cyb13-final-report), each team member must submit an **individual reflection**. This is a mandatory gate — your individual and team grades for the final report are not released until it is submitted. Keep notes throughout GA2 so you're prepared.
+:::
