@@ -1353,7 +1353,7 @@ See [Reflection](#reflection) for the 6 questions. Answers should demonstrate ge
 
 ## Submission
 
-Submit via Gradescope. The autograder will run the provided test suite against your CLI.
+Submit via Pawtograder. 
 
 **Required submission structure:**
 
