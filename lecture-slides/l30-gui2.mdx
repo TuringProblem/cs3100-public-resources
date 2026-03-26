@@ -376,6 +376,8 @@ public class AreaDashboardController {
 
 **Where did the logic go?** Into the ViewModel. The Controller's job is now purely mechanical: wire up bindings in `setViewModel()` and forward user actions to the ViewModel. A student could almost generate this code automatically from the ViewModel's property list.
 
+**If a student asks "why not drop the Controller entirely?":** Great question. Some frameworks do — React hooks and SwiftUI wire views directly to state with no controller class. In JavaFX, we can't quite get there because: (1) FXML expression binding is limited to simple one-way binding — bidirectional binding and ObservableList wiring require Java code, (2) `onAction` handlers in FXML must point to a method on a Java class — that's the Controller, and (3) if we put those handlers on the ViewModel, it would need to accept `ActionEvent` or read widget values, reintroducing the widget dependency we just eliminated. So the Controller survives, but it's just plumbing — no decisions, no state.
+
 > **Transition:** Let's see the magic in action...
 </aside>
 
