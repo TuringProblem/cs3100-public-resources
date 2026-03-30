@@ -28,18 +28,22 @@ prototype design or start fresh. The starter code provides the Model classes (`L
 `Shade`, `Area`, `Scene`), a ViewModel skeleton, and test scaffolding. You fill in the View,
 Controller, and tests — together.
 
-:::info Pair Programming This lab uses **pair programming** — two people, one computer. One person
+:::info Pair Programming
+This lab uses **pair programming** — two people, one computer. One person
 is the **driver** (hands on keyboard, writes code). The other is the **navigator** (reads along,
 thinks ahead, catches mistakes, suggests ideas). **Swap roles every ~10 minutes.** Both of you are
 always engaged — the navigator is not on their phone.
 
 Why? Because GA1 is a team project, and the hardest part of team software development isn't the code
 — it's communicating about the code. Pair programming forces you to articulate your thinking out
-loud, which is exactly the skill you need for code walks and PR reviews. :::
+loud, which is exactly the skill you need for code walks and PR reviews.
+:::
 
-:::info Connection to GA1 Everything you practice today — Scene Builder, FXML wiring, the `@FXML`
+:::info Connection to GA1
+Everything you practice today — Scene Builder, FXML wiring, the `@FXML`
 lifecycle, property binding, ViewModel testing, E2E testing, and collaborating on code — is exactly
-what you'll do for your GA1 Core Features implementation. This lab is your dress rehearsal. :::
+what you'll do for your GA1 Core Features implementation. This lab is your dress rehearsal.
+:::
 
 ---
 
@@ -51,6 +55,7 @@ in the Code panel, setting `accessibleText` in the Properties panel, and saving.
 ~5 minutes, then have students pair up and set up. Make sure students have Scene Builder installed
 before starting — the install instructions are in the Setup section below. Remind students they can
 also use Claude Code or Copilot to tweak FXML files directly.
+::: 
 
 **Pairing rules:** Pairs should NOT be GA1 teammates — fresh collaborators help build broader team
 skills. If odd numbers, make one group of three with a rotating navigator. :::
@@ -117,11 +122,13 @@ by dragging and dropping components.
 After editing in Scene Builder, save (`Cmd+S` / `Ctrl+S`) — the FXML file updates in place. Switch
 back to VS Code to see the changes and write your Controller code.
 
-:::tip AI-Assisted FXML Editing You can also use **Claude Code** or **GitHub Copilot** to tweak your
+:::tip AI-Assisted FXML Editing
+You can also use **Claude Code** or **GitHub Copilot** to tweak your
 FXML files directly — for example, "add a ComboBox below the ListView with fx:id deviceComboBox and
 accessibleText Select device" or "change the VBox spacing to 12 and add padding." This is often
 faster than switching between Scene Builder and VS Code for small adjustments. Northeastern students
-get $200/month of Claude Code usage when signing in with their northeastern.edu account. :::
+get $200/month of Claude Code usage when signing in with their northeastern.edu account.
+:::
 
 
 ### Running the app
@@ -178,14 +185,16 @@ doesn't apply here because the framework handles initialization. Copy that patte
 For ViewModel backing-model fields (`area`, `areas`), the skeletons use `@Nullable` from JSpecify,
 which is accurate — those fields genuinely are null until `setArea()`/`setModel()` is called. When
 you implement the TODO methods, use `Objects.requireNonNull(area, "Call setArea() first")` to get a
-non-null local reference NullAway is happy with. :::
+non-null local reference NullAway is happy with.
+:::
 
 :::tip Known build warnings You'll see **some warnings** when you build — this is normal:
 - **UnusedVariable / UnusedMethod** false positives on `@FXML` fields and `private` handler methods
   (called reflectively by FXMLLoader, so Error Prone can't see the usages)
 - **"Unknown module: javafx.graphics"** and **"Unsupported JavaFX configuration"** during tests (harmless TestFX/module-system noise)
 
-None of these indicate a problem with your code. :::
+None of these indicate a problem with your code.
+:::
 
 
 ---
@@ -195,10 +204,12 @@ None of these indicate a problem with your code. :::
 Pick one of the three SceneItAll design tasks below. **You can reuse either partner's Lab 11 paper
 prototype or start fresh.** Decide together.
 
-:::warning Not Area Dashboard The Area Dashboard was the running example in L29 and L30 — you've
+:::warning Not Area Dashboard
+The Area Dashboard was the running example in L29 and L30 — you've
 already seen the complete FXML, Controller, ViewModel, and tests for it. Pick a **different** task
 so you practice applying the patterns yourself, not reproducing lecture code. The lecture example is
-there as a reference, not a template to copy. :::
+there as a reference, not a template to copy.
+:::
 
 | Design Task               | What to build                                                                                                | How it differs from the lecture example                                                                                                    |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -212,7 +223,8 @@ role swaps.
 :::note For TAs Call out "swap!" at roughly 10-minute intervals during Part 2. Watch for pairs where
 the navigator has disengaged — redirect them. The navigator should be actively reading, suggesting,
 and catching issues ("that `fx:id` doesn't match the field name", "should that be in `initialize()`
-instead?"). :::
+instead?").
+:::
 
 ### Phase A: Build the FXML (Driver 1, ~12 min)
 
@@ -276,7 +288,8 @@ each other.
 :::warning Implement ViewModel methods before wiring Controller listeners If your Controller sets up
 listeners that call ViewModel TODO methods (like `selectDevice()` or `assignToRoom()`), those
 listeners will fire during `initialize()` and throw `UnsupportedOperationException`. Implement the
-ViewModel methods first. :::
+ViewModel methods first.
+:::
 
 **Navigator:** Watch for the #1 lifecycle bug — code that touches `@FXML` fields in the constructor
 instead of `initialize()`. Watch for `fx:id` / field name mismatches. Your task may require widgets
@@ -310,7 +323,8 @@ then **lock it down with automated tests.** ViewModel tests are more stable sinc
 on layout — but E2E tests should wait until you're confident in the interaction design.
 
 In GA1, you'll blend both: write ViewModel tests early (they're cheap and stable), but save E2E
-tests for after your feature's UI has settled. :::
+tests for after your feature's UI has settled.
+:::
 
 ### Write one ViewModel test (one partner drives)
 
@@ -461,7 +475,8 @@ Run it. This one takes a couple seconds — it launches the real GUI.
 
 :::note For TAs Bring the class back together for a group debrief. This is the soft-skills payoff of
 the lab. Ask the questions below and let 3-4 pairs share. Keep it conversational — 8 minutes of
-discussion, 2 minutes for reflection writing. :::
+discussion, 2 minutes for reflection writing.
+:::
 
 **Class discussion — a few pairs share:**
 
@@ -520,4 +535,5 @@ credit.
 
 **Option 2:** Submit whatever you complete along with the reflection documenting your progress, what
 you got stuck on, and what you learned → good-faith credit available. Attendance and genuine
-engagement matter more than perfection. :::
+engagement matter more than perfection.
+:::
