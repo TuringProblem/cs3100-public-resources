@@ -6,6 +6,10 @@ image: /img/assignments/web/a5.png
 
 ## Overview
 
+**Changelog:**
+- 3/16/2026: When displaying a recipe with no servings information, use the phrase "No Servings" (applies to `show`, `recipes` listing, `cook` mode header).
+- 3/16/2026: Added Windows hint: use `WindowsPathAwareParser` so backslashes in paths (e.g., `import json`) work correctly. See [jline/jline3#1238](https://github.com/jline/jline3/issues/1238).
+
 In this assignment, you'll build an **interactive command-line interface (CLI)** for CookYourBooks — a command-oriented terminal application that lets users manage their recipe library, import recipes, scale and convert ingredients, generate shopping lists, and follow recipes step-by-step while cooking.
 
 The CLI is your first **driving adapter** in the [hexagonal architecture](/lecture-notes/l16-testing2) — an adapter that *drives* the application by calling into your service layer on behalf of a user (as opposed to *driven* adapters like repositories, which the application calls out to). But here's the twist: you won't use the `RecipeService` from A4. Instead, you'll design your own service layer — one that's actually well-suited for *multiple* user interfaces. In A4, we told you `RecipeService` was not ideal design. Now you get to prove you understand *why* by building something better.
@@ -113,7 +117,7 @@ An ideal design might require you to create dozens of new classes. While you cer
 
 **Good design requires iteration.** You'll make better architectural decisions if you have time to sketch ideas, sleep on them, get feedback in office hours, and refine before implementing. Students who start early can explore multiple service decompositions before committing.
 
-**Early Bird Bonus (+10 points):** Get the full **Librarian suite** passing by **Friday, March 13 at 11:59 PM EDT** and earn +10 bonus points — that means passing all tests in **GeneralCommandTests** and **LibraryCommandTests** (the [Library Commands](#library-commands-15-points--required-for-early-bird-bonus) rubric section). The bonus is added to the numerator of your final score after all other adjustments (i.e., your final score can be up to 110/100). This milestone covers exactly those commands: `help`, `collections`, `collection create`, `recipes`, `conversions`, `conversion add`, and `conversion remove`. Getting here early means you've designed and implemented your Librarian service and can focus the remaining time on Cook mode, Planner tools, and polishing your ADRs.
+**Early Bird Bonus (+10 points):** Get the full **Librarian suite** passing by **Friday, March 13 at 11:59 PM EDT** and earn +10 bonus points — that means passing all tests in **GeneralCommandTests** and **LibraryCommandTests** (the [Library Commands](#library-commands-15-points--required-for-early-bird-bonus) rubric section), including *all* of the **help** feature (list help and per-command help). The bonus is added to the numerator of your final score after all other adjustments (i.e., your final score can be up to 110/100). This milestone covers exactly those commands: `help`, `collections`, `collection create`, `recipes`, `conversions`, `conversion add`, and `conversion remove`. Getting here early means you've designed and implemented your Librarian service and can focus the remaining time on Cook mode, Planner tools, and polishing your ADRs.
 
 **Submission limits:** You can submit up to **15 times per rolling 24-hour period.** Use these submissions throughout the assignment — each one gives you feedback on what's working and what needs fixing.
 
@@ -304,6 +308,32 @@ while (true) {
 - [JLine Wiki](https://github.com/jline/jline3/wiki) — comprehensive documentation
 - The provided starter includes a `JLineExample.java` you can run to see basic JLine features in action
 - AI assistants are very good at helping with JLine configuration — this is a great use case for Copilot
+
+:::
+
+:::tip Windows Users: Backslash in Paths
+
+JLine's `DefaultParser` treats backslash (`\`) as an escape character. On Windows, paths like `C:\Users\recipes\pie.json` get mangled — backslashes are stripped and path segments merge (see [jline/jline3#1238](https://github.com/jline/jline3/issues/1238)). To fix this, use a custom parser that does not treat backslash as an escape:
+
+```java
+public class WindowsPathAwareParser extends DefaultParser {
+    @Override
+    public boolean isEscapeChar(char ch) {
+        // Don't treat backslash as an escape character
+        return false;
+    }
+}
+```
+
+Then configure your `LineReader` with it:
+
+```java
+LineReader reader = LineReaderBuilder.builder()
+    .parser(new WindowsPathAwareParser())
+    .terminal(terminal)
+    .completer(yourCompleter)
+    .build();
+```
 
 :::
 
@@ -529,6 +559,9 @@ Instructions:
   5. Bake for 12 minutes
 ```
 
+**Requirements:**
+- When a recipe has no servings information, display `No Servings` in place of the servings line (e.g., where "Serves 24 cookies" would otherwise appear). This applies wherever recipe servings are shown: `show`, `recipes` listing, `cook` mode header, etc.
+
 **Error handling:**
 - Recipe not found: `Recipe not found: 'Unknown Recipe'. Use 'search' to find recipes by ingredient.`
 - Multiple matches: Display using the standard [ambiguous match format](#ambiguous-match-format)
@@ -539,7 +572,7 @@ Instructions:
 cyb> search chicken
 ```
 
-Finds all recipes containing the specified ingredient (case-insensitive substring matching). Search operates on the `RecipeRepository` only — it does not separately iterate `RecipeCollectionRepository`. Displays matching recipe titles with their collection membership. Your service layer should provide this search capability.
+Finds all recipes containing the specified ingredient (case-insensitive substring matching). Displays matching recipe titles with their collection membership. Your service layer should provide this search capability.
 
 **Example output:**
 ```text
@@ -807,7 +840,7 @@ Exits the application gracefully.
 
 Your CLI must provide tab completion for:
 
-1. **Command names** — typing `sc` + Tab should suggest `scale`, `search`; `col` should suggest `collection`, `collections`; `sh` should suggest `shopping-list`, `show`; `co` should suggest `convert`, `cook`, `collection`, `collections`
+1. **Command names** — typing `sc` + Tab should suggest `scale`; `col` should suggest `collection`, `collections`; `sh` should suggest `shopping-list`, `show`; `co` should suggest `convert`, `cook`, `collection`, `collections`
 2. **Recipe titles and short IDs** — any command that takes a recipe parameter must offer tab completion for available recipe titles *and* short IDs (first 8 characters of the recipe's internal ID). This lets users tab-complete even when disambiguating by ID after an ambiguous match:
    - `show <recipe>`
    - `delete <recipe>`
@@ -1213,7 +1246,7 @@ This rubric emphasizes design quality equally with implementation. Passing all t
 
 :::tip Early Bird Bonus (+10 points)
 
-Complete the **Library Commands** section below by **Friday, March 13 at 11:59 PM EDT** for a **+10 point bonus**. You must pass all tests in that section (27 tests total) to earn the bonus. This encourages you to get your CLI architecture and Librarian service working early.
+Complete the **Library Commands** section below by **Friday, March 13 at 11:59 PM EDT** for a **+10 point bonus**. You must pass all tests in that section (27 tests total), including *all* of the **help** feature (list help and per-command help), to earn the bonus. This encourages you to get your CLI architecture and Librarian service working early.
 
 :::
 
@@ -1320,7 +1353,7 @@ See [Reflection](#reflection) for the 6 questions. Answers should demonstrate ge
 
 ## Submission
 
-Submit via Gradescope. The autograder will run the provided test suite against your CLI.
+Submit via Pawtograder. 
 
 **Required submission structure:**
 
