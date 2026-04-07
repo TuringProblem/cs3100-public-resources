@@ -1104,6 +1104,52 @@ L24 callback: this was a **slip** — right intention, wrong column. The audit t
 
 **Blast radius comparison:** Without audit trail: 200 students' grades wrong, potentially discovered only at end of semester when final grades don't match expectations. With audit trail: same 200 grades affected, detected in hours, reversed in minutes. Same hole in the Swiss cheese, but the audit layer prevented it from becoming harm.
 
+> **Transition:** The gradebook incident was caught because a student knew the flag mechanism existed. What if they hadn't?
+</aside>
+
+</Slide>
+
+<Slide>
+
+## The Meta-Slice: Knowing the Defense System Exists
+
+<div style={{fontSize: '0.75em'}}>
+
+Every Swiss cheese layer assumes someone **knows it's there.** A defense you don't know about is a defense you can't use, maintain, or trigger.
+
+</div>
+
+<div className="fragment" style={{fontSize: '0.6em', marginTop: '0.3em'}}>
+
+| Case | Who knew the layers? | Outcome |
+|------|---------------------|---------|
+| **Boeing 737 MAX** | Pilots didn't know MCAS existed | Could not diagnose or override — 346 killed |
+| **Citicorp Tower** | LeMessurier told every stakeholder | Each person knew their role — building saved |
+| **Pawtograder** (alone) | Student sees 0/100, assumes "I failed" | Never triggers flag mechanism |
+| **Pawtograder** (compares notes) | Student discovers classmates also got 0 | Reclassifies as systemic — flags it, triggers investigation |
+| **Pawtograder** (grade finalization) | Multiple instructors review all grades before submission | Catches systematic errors even if no student flags them |
+
+</div>
+
+<div className="fragment" style={{fontSize: '0.8em', marginTop: '0.5em', backgroundColor: 'rgba(147,112,219,0.15)', padding: '0.8em', borderRadius: '8px'}}>
+
+**Practical rule:** When you see a surprising result — a 0/100, a mysterious crash, a grade that doesn't match your work — **compare notes before assuming you're the problem.** You might be the person who activates the next defense layer.
+
+</div>
+
+<aside className="notes">
+**This slide names what's been implicit: knowledge of the defense system is itself a defense layer.**
+
+**The table makes the pattern explicit across three scales:**
+- **Boeing:** Pilots were the last human layer, but "no retraining needed" meant they didn't know MCAS existed. You can't override a system you don't know is there.
+- **Citicorp:** LeMessurier didn't just fix the building — he told the architect, the CEO, the Building Commissioner, the Red Cross, police, and weather forecasters. Every stakeholder knew what the defenses were and what their role was.
+- **Pawtograder (individual vs. collective):** The same 0/100 produces two completely different outcomes depending on whether the student knows they're part of a larger defense system. A student who debugs alone for hours may never discover the autograder crashed. A student who compares notes discovers "everyone got a zero" — that reclassification activates the flag mechanism, the staff investigation, and the fix.
+- **Pawtograder (grade finalization):** Even if no student flags an issue, multiple instructors manually review all grades before finalization. This is another meta-slice layer that students may not know about — course staff don't just trust the automated output. But knowing this layer exists doesn't mean students should stay quiet; the earlier a problem is caught, the easier it is to fix.
+
+**Connection to the gradebook scenario (previous slide):** The gradebook incident was caught because a student knew the flag mechanism existed and used it. If they'd assumed "grades are always correct, I must have done something wrong," the overwrite would have gone undetected until the instructor review — costing weeks of unnecessary anxiety.
+
+**This is ~2 minutes.** Show the table, make the Pawtograder point concrete, move on.
+
 > **Transition:** Let's step back and see how everything we've learned this semester connects to safety...
 </aside>
 
@@ -1145,6 +1191,8 @@ Open Poll Everywhere and answer the three questions.
 - D. A correct result — the student's code caused the crash
 
 *Discussion: Fail-safe would be "internal error, needs review." Assigning 0 for an infrastructure failure is fail-dangerous — the system caused harm instead of stopping safely. The student's code didn't cause the out-of-memory error; the grading infrastructure did.*
+
+*If time permits after Q3 debrief: "In the Pawtograder scenario, what's the difference between one student seeing 0/100 and the whole class seeing 0/100? That's the meta-slice — knowing you're part of a defense system changes how you respond to failure."*
 
 > **Transition:** Now let's connect everything...
 </aside>
